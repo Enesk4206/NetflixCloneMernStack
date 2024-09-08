@@ -77,4 +77,48 @@ import authRoutes from "./routes/auth.route.js";
 app.use("/api/v1/auth", authRoutes);
 
 ///////////////////////////////////////////////////////////
-8-)
+8-)ilk olarak routes kurduk server.js için yönlendirme ve mesajlar içinde auth.controller.js controller kurduk routes/auth.route.js için
+
+9-) mongodb de bir hesap kurdum -> create clusterdan free plan M0 seçtim -> Create deploymenta bastım bana connect to user ekranı geldi passwordu kopyaladım (Qvfqn4rC6ZIoJFs9)şifre -> en son kurulumu yapıyorum Data servicesdan getconnectionstringsten bağlantıyı alıyorum ---> mongodb+srv://eneskyaa2321:<db_password>@cluster0.v62bs.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+
+10-) mongo atlas panelinde networkaccess kısmından emin ol ıp adresinin orda olduğuna
+
+11-) .env klasorunu kuruyorum dışarıdan alabileceğim bağlantılar için kullanabilirim mongodb connectionstring port adresi gibi
+
+12-) .env içerisinde ayarları değiştiriyorum database adını veriyorum
+before*
+mongodb+srv://eneskyaa2321:<db_password>@cluster0.v62bs.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+after*
+MONGO_URI = mongodb+srv://eneskyaa2321:<db_password>@cluster0.v62bs.mongodb.net/netflix_db?retryWrites=true&w=majority&appName=Cluster0
+//////////////////////////////////////////////////////////////////////////////
+13-) Mongodb bağlantısı .env klasörü içerisinde port ayarlarıda backend içerisindeki envVars.js dosyasının içerisinde
+dotenv.config();  --> ile tanımlanabiliniyor
+
+
+
+14-) mongodb bağlantısına emin olmak için 
+
+console.log("MONGO_URI: ", process.env.MONGO_URI);
+//////////////////////////////////////////////////////////////////
+15-) config klasörü içerisinde db.js ekliyorum
+
+import mongoose from "mongoose";
+import { ENV_VARS } from "./envVars.js";
+
+//BU İŞLEMDEN SONRA SERVER.JS KISMINA GİT APP.LİSTEN İÇERİSİNE  connectDB() ekle
+export const connectDB = async () => {
+  try {
+    const conn = await mongoose.connect(ENV_VARS.MONGO_URI);
+    console.log("MongoDb Connected: " + conn.connection.host);
+  } catch (error) {
+    console.error("Error connection to MONGODB: " + error.messsage);
+    process.exit(1); //eğer ki 1 ise hata 0 ise herşey yolunda
+  }
+};
+
+kodlarını ekliyorum
+//////////////////////////////////////////////////////////////////
+
+16-) postman ile veri ekleme ve kontrol et signup auth controllerda bir blank oluşturup içerisine post signup için body raw json formatı seçiyorum
+
+//53
