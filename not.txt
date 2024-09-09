@@ -134,4 +134,5 @@ kodlarını ekliyorum
 trycatch vererek direk clearCookie("tanımlıcookieadı") direk silerek çıkışı veriyoruz
 
 
-19-)eklendi
+19-) LOGİN FUNCTIONUNU TANIMLAMAK
+ilk olarak email ve pass ile giriş yapılacağından 
