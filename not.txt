@@ -134,4 +134,4 @@ kodlarını ekliyorum
 trycatch vererek direk clearCookie("tanımlıcookieadı") direk silerek çıkışı veriyoruz
 
 
-19-)
+19-)eklendi
