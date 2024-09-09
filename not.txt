@@ -121,4 +121,17 @@ kodlarını ekliyorum
 
 16-) postman ile veri ekleme ve kontrol et signup auth controllerda bir blank oluşturup içerisine post signup için body raw json formatı seçiyorum
 
-//53
+//////////////////////////////////////////////////////////////////
+
+17-) JWT WEB TOKEN İLE kullanıcı işlemlerininde token hareketleri 
+--> .env içerisine token stringi tanımlıyorum
+--> envVars içerisine tanımlıyorum 
+--> utils/generateToken sayfasına konfigürasyon ayarları yapıyorum
+--> controller/auth/control içerisine tanımlıyorum
+
+
+18-) LOGOUT FUNCTIONUNU TANIMLAMAK
+trycatch vererek direk clearCookie("tanımlıcookieadı") direk silerek çıkışı veriyoruz
+
+
+19-)
