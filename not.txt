@@ -1,3 +1,17 @@
+git checkout (yazdığın branch) ile githubdaki kodu yerel koduma çekerim
+kodu yollama 
+git add .
+git commit -m "Yaptığınız değişiklikler için kısa bir açıklama"
+git push origin master
+git pull origin master
+
+çakışma önleme
+git add .
+git commit -m "Çakışma çözüldü"
+git push origin master
+
+
+
 1-) npm init -y ekledim
 2-) express , jsonwebtoken , mongoose , cookie-parser , dotenv , axios , bcryptjs  paketlerinide ekledim
 
@@ -142,7 +156,7 @@ DEĞİŞTİR
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-1-) TMDB den filim ve dizilerin API'sini çekmek
+20-) TMDB den filim ve dizilerin API'sini çekmek
 ->TMDB kaydol
 ->API kısmında işlemleri yap
 ->more kısmında API reference kısmını seç
