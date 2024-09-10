@@ -85,6 +85,7 @@ export async function login(req, res) {
         .status(400)
         .json({ succes: false, message: "Invalid credentials" });
     }
+    // added JWT funck here
     generateTokenAndSetCookie(user._id, res);
 
     res
