@@ -186,3 +186,7 @@ so that is way protect our tv and movie routes
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 22-) Search Routes
+
+- firstly we add routes and accourding server.js then we establish routes 
+- relate to routes create a controller search.controller.js 
+- and create function in there

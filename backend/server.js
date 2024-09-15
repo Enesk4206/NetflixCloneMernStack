@@ -5,7 +5,7 @@ import cookieParser from "cookie-parser";
 import authRoutes from "./routes/auth.route.js";
 import movieRoutes from "./routes/movie.route.js";
 import tvRoutes from "./routes/tv.route.js";
-import searchRoutes from "";
+import searchRoutes from "./routes/search.route.js";
 
 //configures bunların {} içinde olmasının sebebi default değiller ondan
 import { ENV_VARS } from "../config/envVars.js";
