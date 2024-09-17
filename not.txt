@@ -1,3 +1,17 @@
+git checkout (yazdığın branch) ile githubdaki kodu yerel koduma çekerim
+kodu yollama 
+git add .
+git commit -m "Yaptığınız değişiklikler için kısa bir açıklama"
+git push origin master
+git pull origin master
+
+çakışma önleme
+git add .
+git commit -m "Çakışma çözüldü"
+git push origin master
+
+
+
 1-) npm init -y ekledim
 2-) express , jsonwebtoken , mongoose , cookie-parser , dotenv , axios , bcryptjs  paketlerinide ekledim
 
@@ -77,4 +91,153 @@ import authRoutes from "./routes/auth.route.js";
 app.use("/api/v1/auth", authRoutes);
 
 ///////////////////////////////////////////////////////////
-8-)
+8-)ilk olarak routes kurduk server.js için yönlendirme ve mesajlar içinde auth.controller.js controller kurduk routes/auth.route.js için
+
+9-) mongodb de bir hesap kurdum -> create clusterdan free plan M0 seçtim -> Create deploymenta bastım bana connect to user ekranı geldi passwordu kopyaladım (Qvfqn4rC6ZIoJFs9)şifre -> en son kurulumu yapıyorum Data servicesdan getconnectionstringsten bağlantıyı alıyorum ---> mongodb+srv://eneskyaa2321:<db_password>@cluster0.v62bs.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+
+10-) mongo atlas panelinde networkaccess kısmından emin ol ıp adresinin orda olduğuna
+
+11-) .env klasorunu kuruyorum dışarıdan alabileceğim bağlantılar için kullanabilirim mongodb connectionstring port adresi gibi
+
+12-) .env içerisinde ayarları değiştiriyorum database adını veriyorum
+before*
+mongodb+srv://eneskyaa2321:<db_password>@cluster0.v62bs.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+after*
+MONGO_URI = mongodb+srv://eneskyaa2321:<db_password>@cluster0.v62bs.mongodb.net/netflix_db?retryWrites=true&w=majority&appName=Cluster0
+//////////////////////////////////////////////////////////////////////////////
+13-) Mongodb bağlantısı .env klasörü içerisinde port ayarlarıda backend içerisindeki envVars.js dosyasının içerisinde
+dotenv.config();  --> ile tanımlanabiliniyor
+
+
+
+14-) mongodb bağlantısına emin olmak için 
+
+console.log("MONGO_URI: ", process.env.MONGO_URI);
+//////////////////////////////////////////////////////////////////
+15-) config klasörü içerisinde db.js ekliyorum
+
+import mongoose from "mongoose";
+import { ENV_VARS } from "./envVars.js";
+
+//BU İŞLEMDEN SONRA SERVER.JS KISMINA GİT APP.LİSTEN İÇERİSİNE  connectDB() ekle
+export const connectDB = async () => {
+  try {
+    const conn = await mongoose.connect(ENV_VARS.MONGO_URI);
+    console.log("MongoDb Connected: " + conn.connection.host);
+  } catch (error) {
+    console.error("Error connection to MONGODB: " + error.messsage);
+    process.exit(1); //eğer ki 1 ise hata 0 ise herşey yolunda
+  }
+};
+
+kodlarını ekliyorum
+//////////////////////////////////////////////////////////////////
+
+16-) postman ile veri ekleme ve kontrol et signup auth controllerda bir blank oluşturup içerisine post signup için body raw json formatı seçiyorum
+
+//////////////////////////////////////////////////////////////////
+
+17-) JWT WEB TOKEN İLE kullanıcı işlemlerininde token hareketleri 
+--> .env içerisine token stringi tanımlıyorum
+--> envVars içerisine tanımlıyorum 
+--> utils/generateToken sayfasına konfigürasyon ayarları yapıyorum
+--> controller/auth/control içerisine tanımlıyorum
+
+
+18-) LOGOUT FUNCTIONUNU TANIMLAMAK
+trycatch vererek direk clearCookie("tanımlıcookieadı") direk silerek çıkışı veriyoruz
+
+
+19-) LOGİN FUNCTIONUNU TANIMLAMAK
+ilk olarak email ve pass ile giriş yapılacağından 
+DEĞİŞTİR
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+20-) TMDB den filim ve dizilerin API'sini çekmek
+->TMDB kaydol
+->API kısmında işlemleri yap
+->more kısmında API reference kısmını seç
+->
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+21-)PROTECT ROUTES 
+
+- first of all we add protect routes on server.js 
+- it likes app.use("/api/v1/tv",protectRoute, tvRoutes); here 
+so that is way protect our tv and movie routes 
+
+-we add middleware folder in that folder add protectRoute.js 
+- so we add configuration options embed and add the server.js
+
+- On this section we protect when user get action on movies and tv series we just write a middleware and user must join authentication user
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+22-) Search Routes
+
+- firstly we add routes and accourding server.js then we establish routes 
+- relate to routes create a controller search.controller.js 
+- and create function in there
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+1-) FRONT END SIDE 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+*** npm create vite@latest .
+*** y - react - javascript , 
+
+*** download npm libraries axios , lucide-react , react-player ,   react-hot-toast , react-router-dom , zustand
+
+*** add extensions eslient and tailwindcss intellisense and es7 react extension
+
+*** remove app.css
+*** clear app.jsx and index.css and assets files
+
+*** initiliaze tailwind
+->make sure add the frontend folder side
+
+-> command terminal
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+
+-> tailwind.config.js in delete all code 
+  paste this code:
+
+  /** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+
+-> in index.css paste this code 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+2-) AUTH SCREEN UI DESIGN
+
