@@ -1,9 +1,15 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
 
 const AuthScreen = () => {
   const [email, setEmail] = useState("");
+  const navigate = useNavigate();
+
+  const handleFormSubmit = (e) =>{
+    e.preventDefault();
+    navigate("/signup?email="+email)
+  }
   return (
     <div className="hero-bg relative">
       {/* Navbar*/}
@@ -28,7 +34,10 @@ const AuthScreen = () => {
         <p className="mb-4">
           Ready to watch? Enter your email to create or restart your membership.
         </p>
-        <form className="flex flex-col md:flex-row gap-4 w-1/2">
+        <form
+          className="flex flex-col md:flex-row gap-4 w-1/2"
+          onSubmit={handleFormSubmit}
+        >
           <input
             type="email"
             placeholder="Email address"
@@ -160,7 +169,24 @@ const AuthScreen = () => {
       <div className="h-2 w-full bg-[#232323]" aria-hidden="true"></div>
 
       {/*4th section */}
-      <div></div>
+      <div className="py-10 bg-black text-white">
+        <div className="flex max-w-6xl mx-auto items-center justify-center flex-col-reverse md:flex-row px-4 md:px-2">
+          {/*left */}
+          <div className="flex-1 relative">
+            <img src="/kids.png" alt="Enjoy on your tv" className="mt-4" />
+          </div>
+          {/*right*/}
+          <div className="flex-1 text-center md:text-left">
+            <h2 className="text-4xl md:text-5xl font-extrabold mb-4">
+              Create profiles for kids
+            </h2>
+            <p className="text-lg md:text-xl">
+              Send kids on adventures with their favorite characters in a space
+              made just for them-free with your membership.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
